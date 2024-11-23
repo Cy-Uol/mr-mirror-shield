@@ -12,13 +12,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:	
 	if ray_cast_right.is_colliding():
 		var collider = ray_cast_right.get_collider()
-		print(collider.name)
 		if collider.name != "Player":
 			direction = 1
 		
 	if ray_cast_left.is_colliding():
 		var collider = ray_cast_left.get_collider()
-		print(collider.name)
 		if collider.name != "Player":
 			direction = -1
 		
@@ -31,4 +29,4 @@ func _process(delta: float) -> void:
 		
 	#velocity.x = move_toward(velocity.x, -direction * SPEED, delta)
 	position.x += -direction * SPEED * delta
-	#print("mal smells")
+	print("mal smells")
