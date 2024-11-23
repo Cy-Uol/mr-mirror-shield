@@ -20,8 +20,6 @@ func _process(delta: float) -> void:
 		if collider.name != "Player":
 			direction = -1
 		
-	
-		
 	if direction > 0:
 		anim.flip_h = false
 	elif direction < 0:
@@ -29,4 +27,4 @@ func _process(delta: float) -> void:
 		
 	#velocity.x = move_toward(velocity.x, -direction * SPEED, delta)
 	position.x += -direction * SPEED * delta
-	print("mal smells")
+	anim.play("default")

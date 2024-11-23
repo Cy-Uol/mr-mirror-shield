@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	
 	if was_on_floor && !is_on_floor():
 		timer.start()
-	
+			
 	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("default")
