@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpuws3revuomr"]
+[gd_scene load_steps=7 format=3 uid="uid://bpuws3revuomr"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ctk16"]
 [ext_resource type="Texture2D" uid="uid://brfhl51e5ekkp" path="res://Sprites/Misc/TitleScreen.png" id="1_e8wjq"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_omkmq"]
+
+[sub_resource type="Theme" id="Theme_u2f5n"]
+Button/icons/icon = SubResource("ImageTexture_omkmq")
+
+[sub_resource type="ImageTexture" id="ImageTexture_362qw"]
 
 [sub_resource type="Shortcut" id="Shortcut_y0iap"]
 
@@ -26,10 +33,10 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
-offset_left = 477.0
-offset_top = -29.0
-offset_right = 1546.0
-offset_bottom = 542.0
+offset_left = 490.0
+offset_top = -4.0
+offset_right = 1559.0
+offset_bottom = 567.0
 texture = ExtResource("1_e8wjq")
 
 [node name="Play" type="Button" parent="Panel"]
@@ -38,7 +45,9 @@ offset_left = 773.0
 offset_top = 406.0
 offset_right = 1129.0
 offset_bottom = 564.0
+theme = SubResource("Theme_u2f5n")
 theme_override_font_sizes/font_size = 52
+theme_override_icons/icon = SubResource("ImageTexture_362qw")
 shortcut = SubResource("Shortcut_y0iap")
 text = "PLAY"
 
