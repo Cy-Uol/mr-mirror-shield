@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cacranhqely0u"]
+
+[ext_resource type="Texture2D" uid="uid://bbqgxeaglf5xg" path="res://Sprites/Enemys/SlimeSpritesheet.png" id="1_2mjeu"]
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_pvqsr"]
+[ext_resource type="PackedScene" uid="uid://b6eaaoi1tn5mb" path="res://Scenes/killzone.tscn" id="2_si23n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggd6w"]
+atlas = ExtResource("1_2mjeu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vccof"]
+atlas = ExtResource("1_2mjeu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4coa5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggd6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vccof")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6oaap"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jwe3"]
+radius = 11.0
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pvqsr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4coa5")
+frame_progress = 0.189196
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_6oaap")
+
+[node name="Killzone" parent="." instance=ExtResource("2_si23n")]
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_5jwe3")

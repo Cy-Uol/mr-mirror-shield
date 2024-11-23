@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c5m130utlq7ad" path="res://Sprites/Main-Character/Main-CharacterAttack2.png" id="4_3s782"]
 [ext_resource type="Texture2D" uid="uid://dcs4gl1ju65od" path="res://Sprites/Main-Character/Main-CharacterWalk2.png" id="4_hy0u6"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_piuwx"]
+radius = 4.0
+height = 18.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ciaw3"]
 atlas = ExtResource("1_lolmb")
 region = Rect2(0, 0, 32, 32)
@@ -90,19 +94,20 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_piuwx"]
-radius = 4.0
-height = 18.0
-
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_fps1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
+shape = SubResource("CapsuleShape2D_piuwx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_xbbm1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-shape = SubResource("CapsuleShape2D_piuwx")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
