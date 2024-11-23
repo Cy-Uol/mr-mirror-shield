@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+const SPEED = 170.0
 const JUMP_VELOCITY = -300.0
 const MAX_SPEED = 220.0
 const ACCELERATION = 75.0
@@ -43,8 +43,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if was_on_floor && !is_on_floor():
-		timer.start()
-			
+		timer.start()		
+	
 	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("default")
