@@ -61,10 +61,8 @@ func _on_shield_body_entered(body: Node2D) -> void:
 
 
 func _on_shield_area_entered(area: Area2D) -> void:
-	var projectile = area.get_parent()
-	if projectile is projectile_thing:
-		projectile.direction = 1
-		projectile.position += Vector2(1, 0)
-		projectile.flipped = true
-		queue_free()
+	if area.get_parent() is projectile_thing:
+		area.get_parent().direction = 1
+		area.get_parent().position += Vector2(1, 0)
+		area.get_parent().flipped = true
 		pass
