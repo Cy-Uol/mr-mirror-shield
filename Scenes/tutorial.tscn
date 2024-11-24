@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cdewaym4q1hbb" path="res://Sprites/Misc/arrow.png" id="10_aqqk5"]
 [ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="11_uq3lj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0qnfc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkjwy"]
 texture = ExtResource("2_86mk1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -40,9 +40,10 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_v45k7"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_0qnfc")
+sources/0 = SubResource("TileSetAtlasSource_wkjwy")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ukf3y"]
+normal = Vector2(-0.00881023, -0.999961)
 
 [node name="Tutorial" type="Node2D"]
 
