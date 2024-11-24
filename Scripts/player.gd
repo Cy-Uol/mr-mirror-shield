@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 170.0
+const SPEED = 140.0
 const JUMP_VELOCITY = -300.0
 const MAX_SPEED = 220.0
 const ACCELERATION = 75.0
@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 	if Global.dead == true:
 		return
 	if Input.is_action_just_pressed("menu"):
+		Global.direction = -1
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 	# Add the gravity.
@@ -32,7 +33,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = false
 	elif direction < 0:
 		animated_sprite.flip_h = true
-		
+
+
 	if direction:
 		velocity.x = move_toward(velocity.x, direction * MAX_SPEED, ACCELERATION)
 	else:
@@ -52,3 +54,17 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
+
+
+func _on_shield_body_entered(body: Node2D) -> void:
+	pass
+
+
+func _on_shield_area_entered(area: Area2D) -> void:
+	var projectile = area.get_parent()
+	if projectile is projectile_thing:
+		projectile.direction = 1
+		projectile.position += Vector2(1, 0)
+		projectile.flipped = true
+		queue_free()
+		pass

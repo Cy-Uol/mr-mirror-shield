@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmw5hm5ckloff"]
+[gd_scene load_steps=18 format=3 uid="uid://bmw5hm5ckloff"]
 
 [ext_resource type="PackedScene" uid="uid://bu7b6gqjqtlqm" path="res://Scenes/player.tscn" id="1_d6fje"]
 [ext_resource type="Texture2D" uid="uid://28hlihsxahu5" path="res://Sprites/tilemap.png" id="2_86mk1"]
@@ -10,7 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bph56kv6yfuxn" path="res://Sprites/Misc/RightArrow.png" id="8_qe5va"]
 [ext_resource type="Texture2D" uid="uid://d2fxw745wawt6" path="res://Sprites/Misc/SpaceBar.png" id="9_5s0qq"]
 [ext_resource type="Texture2D" uid="uid://cdewaym4q1hbb" path="res://Sprites/Misc/arrow.png" id="10_aqqk5"]
+[ext_resource type="Texture2D" uid="uid://unebckix0mbc" path="res://Sprites/Mirror.png" id="11_ph1mw"]
 [ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="11_uq3lj"]
+[ext_resource type="Texture2D" uid="uid://cja7j82lwx63r" path="res://Sprites/Stab.png" id="12_y026m"]
+[ext_resource type="PackedScene" uid="uid://pe1w4ih0bh4l" path="res://Scenes/Twoey.tscn" id="14_o2swu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkjwy"]
 texture = ExtResource("2_86mk1")
@@ -48,7 +51,7 @@ normal = Vector2(-0.00881023, -0.999961)
 [node name="Tutorial" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_d6fje")]
-position = Vector2(-174, 14)
+position = Vector2(944, -49)
 collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -80,7 +83,7 @@ scale = Vector2(1.25781, 1.35417)
 texture = ExtResource("3_xj8ot")
 
 [node name="Killzone" parent="." instance=ExtResource("4_sf4lb")]
-position = Vector2(254, 182)
+position = Vector2(386, 193)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_ukf3y")
@@ -141,6 +144,11 @@ position = Vector2(384, 61)
 rotation = 1.5708
 texture = ExtResource("10_aqqk5")
 
+[node name="Arrow_4" type="Sprite2D" parent="Foreground/Arrows"]
+position = Vector2(1156, -80)
+rotation = 1.5708
+texture = ExtResource("10_aqqk5")
+
 [node name="Death_Label" type="Label" parent="Foreground"]
 offset_left = 367.0
 offset_top = 17.0
@@ -152,6 +160,33 @@ text = "Death
 Down
 Here"
 horizontal_alignment = 1
+
+[node name="Attack_Label" type="Label" parent="Foreground"]
+offset_left = 650.0
+offset_top = -27.0
+offset_right = 810.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("6_k1n2n")
+theme_override_font_sizes/font_size = 8
+text = "Attack"
+
+[node name="Reflect_Label" type="Label" parent="Foreground"]
+offset_left = 1045.0
+offset_top = -67.0
+offset_right = 1135.0
+offset_bottom = -44.0
+theme_override_fonts/font = ExtResource("6_k1n2n")
+theme_override_font_sizes/font_size = 8
+text = "Reflect"
+horizontal_alignment = 1
+
+[node name="Mirror" type="Sprite2D" parent="Foreground"]
+position = Vector2(1089, -49)
+texture = ExtResource("11_ph1mw")
+
+[node name="Stab" type="Sprite2D" parent="Foreground"]
+position = Vector2(640, -23)
+texture = ExtResource("12_y026m")
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -173,3 +208,7 @@ theme_override_font_sizes/font_size = 70
 text = "Game Over!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Twoey" parent="." instance=ExtResource("14_o2swu")]
+z_index = 2
+position = Vector2(1156, -46)

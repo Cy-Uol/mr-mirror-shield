@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjqv0yop45i6y"]
+
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_4604v"]
+[ext_resource type="Texture2D" uid="uid://ckxoenbh1mm54" path="res://Sprites/Enemys/Seed.png" id="1_kyxnv"]
+[ext_resource type="PackedScene" uid="uid://b6eaaoi1tn5mb" path="res://Scenes/killzone.tscn" id="3_d7own"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o38jb"]
+size = Vector2(3, 3)
+
+[node name="Projectile" type="Area2D"]
+position = Vector2(1, 1)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_4604v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kyxnv")
+
+[node name="Killzone" parent="." instance=ExtResource("3_d7own")]
+position = Vector2(-6.47667, -6.33744)
+
+[node name="Seed" type="CollisionShape2D" parent="Killzone"]
+z_index = 2
+position = Vector2(5.97667, 5.83744)
+shape = SubResource("RectangleShape2D_o38jb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://pe1w4ih0bh4l"]
+
+[ext_resource type="Script" path="res://Scripts/twoey.gd" id="1_6tfno"]
+[ext_resource type="Texture2D" uid="uid://cvmgy1huwqv86" path="res://Sprites/Enemys/TwoeySpritesheet.png" id="1_ffwl2"]
+[ext_resource type="PackedScene" uid="uid://bjqv0yop45i6y" path="res://Scenes/projectile.tscn" id="2_f7xi3"]
+[ext_resource type="PackedScene" uid="uid://b6eaaoi1tn5mb" path="res://Scenes/killzone.tscn" id="3_6jlwm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf01e"]
+radius = 146.003
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhyy1"]
+atlas = ExtResource("1_ffwl2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1mxk"]
+atlas = ExtResource("1_ffwl2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbix0"]
+atlas = ExtResource("1_ffwl2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uhj4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhyy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1mxk")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbix0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljn1h"]
+radius = 4.0
+height = 18.0
+
+[node name="Twoey" type="Area2D"]
+position = Vector2(-1, -1)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_6tfno")
+Projectile = ExtResource("2_f7xi3")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_bf01e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_uhj4d")
+animation = &"attack"
+
+[node name="Killzone" parent="." instance=ExtResource("3_6jlwm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_ljn1h")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-5, -3)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
