@@ -32,3 +32,14 @@ func fire_projectile():
 	b.global_transform = mouth.global_transform
 	anim.play("attack")
 	
+
+
+func _on_seed_area_body_entered(body: Node2D) -> void:
+
+	pass # Replace with function body.
+
+
+func _on_seed_area_area_entered(area: Area2D) -> void:
+	if area.get_parent() is projectile_thing:
+		self.queue_free()
+	print(area.name)

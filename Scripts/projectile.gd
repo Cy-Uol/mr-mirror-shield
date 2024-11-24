@@ -14,11 +14,6 @@ func _physics_process(delta):
 	
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if body.name == "Shield" && !flipped:
 		sprite.flip_h = true
 		flipped = true
-		
-
-	body.queue_free()
-	queue_free()
