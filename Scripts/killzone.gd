@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var timer = $Timer
-@onready var game_over = $/root/Tutorial/GameOverScreen
+@onready var game_over = $/root/Cave/GameOverScreen
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name != "TileMap":
