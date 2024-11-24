@@ -114,7 +114,7 @@ wait_time = 0.12
 one_shot = true
 
 [node name="Shield" parent="." instance=ExtResource("9_jithd")]
-position = Vector2(10, 8)
+position = Vector2(9, 10)
 
 [connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]
 [connection signal="body_entered" from="Shield" to="." method="_on_shield_body_entered"]
