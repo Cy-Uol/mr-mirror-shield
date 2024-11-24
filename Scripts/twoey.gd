@@ -41,5 +41,6 @@ func _on_seed_area_body_entered(body: Node2D) -> void:
 
 func _on_seed_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is projectile_thing:
+		area.queue_free()
 		self.queue_free()
 	print(area.name)
